@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CardProfile xmlns="http://www.simalliance.org/SIMProfile/2.0">
+  <Header>
+    <TemplateInformation>
+      <TemplateVersion>2.0</TemplateVersion>
+      <DateOfIssuance>2010-06-04</DateOfIssuance>
+      <XMLValidated>true</XMLValidated>
+      <TemplateVersionHistory>Add of profile naming convention and
+      name space, correction of existing fields, add of new
+      fields</TemplateVersionHistory>
+      <XMLToolInformation>SPML Editor 2.0.0</XMLToolInformation>
+      <Comments />
+    </TemplateInformation>
+    <SIMCardProfileReference>
+      <MobileCountryCode>001</MobileCountryCode>
+      <MobileNetworkCode>001</MobileNetworkCode>
+      <ProfileName>UXP Sample File</ProfileName>
+      <ProfileVersion>01</ProfileVersion>
+      <ProfileRevision>01</ProfileRevision>
+      <DateOfIssuance>2009-06-19</DateOfIssuance>
+      <Issuer>None</Issuer>
+      <RevisionHistory>01</RevisionHistory>
+    </SIMCardProfileReference>
+    <CustomerSpecificRequirements>
+      <PPS>95</PPS>
+      <Voltage>1.8V to 5V</Voltage>
+      <ClockStopMode>No preferred level</ClockStopMode>
+      <CardTechnology>CombiCard (2G and 3G)</CardTechnology>
+      <NumberIncomingMessages>03</NumberIncomingMessages>
+      <NumberOutgoingMessages>03</NumberOutgoingMessages>
+      <Re-entrance>FormattedSMSPPEnv</Re-entrance>
+      <Re-entrance>UnformattedSMSPPEnv</Re-entrance>
+      <Re-entrance>EventDownload</Re-entrance>
+      <BIP>true</BIP>
+      <Comments>None</Comments>
+    </CustomerSpecificRequirements>
+  </Header>
+  <CardBody Comment="None">
+    <MF_DF FileName="MF" FileDescription="Master File"
+    FileID="3F00" FileType="MF" FilePath="3F00" Shareable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <DFAccessConditions3GType>
+          <DeleteSelf>NEV</DeleteSelf>
+          <TerminateDF>NEV</TerminateDF>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <CreateChildDF Operator="OR">ADM1</CreateChildDF>
+          <CreateChildDF Operator="OR">ADM2</CreateChildDF>
+          <CreateChildEF Operator="AND">ADM1</CreateChildEF>
+          <CreateChildEF Operator="AND">ADM2</CreateChildEF>
+          <DeleteChild>ADM1</DeleteChild>
+        </DFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+    </MF_DF>
+    <MF_DF FileName="Telecom" FileDescription="Telecom DF"
+    FileID="7F10" FileType="DF" FilePath="3F007F10"
+    Shareable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <DFAccessConditions3GType>
+          <DeleteSelf>NEV</DeleteSelf>
+          <TerminateDF>NEV</TerminateDF>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <CreateChildDF>ADM1</CreateChildDF>
+          <CreateChildEF>ADM1</CreateChildEF>
+          <DeleteChild>ADM1</DeleteChild>
+        </DFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+    </MF_DF>
+    <MF_DF FileName="GSM" FileDescription="GSM DF" FileID="7F20"
+    FileType="DF" FilePath="3F007F20" Shareable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <DFAccessConditions3GType>
+          <DeleteSelf>NEV</DeleteSelf>
+          <TerminateDF>NEV</TerminateDF>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <CreateChildDF>ADM1</CreateChildDF>
+          <CreateChildEF>ADM1</CreateChildEF>
+          <DeleteChild>ADM1</DeleteChild>
+        </DFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+    </MF_DF>
+    <ADF FileName="USIM" FileDescription="USIM ADF" FileID="7F40"
+    AID="A0000000871002FF81FFFF8903050001" FileType="USIM"
+    FilePath="7F40" AID_ETSI_102226_DAP="0000000000"
+    Shareable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <DFAccessConditions3GType>
+          <DeleteSelf>NEV</DeleteSelf>
+          <TerminateDF>NEV</TerminateDF>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <CreateChildDF Operator="OR">ADM1</CreateChildDF>
+          <CreateChildDF Operator="OR">ADM2</CreateChildDF>
+          <CreateChildEF Operator="AND">ADM1</CreateChildEF>
+          <CreateChildEF Operator="AND">ADM2</CreateChildEF>
+          <DeleteChild>ADM1</DeleteChild>
+        </DFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+    </ADF>
+    <EF FileName="Dir" FileDescription="Directory" FileID="2F00"
+    FileType="LF" FilePath="3F002F00" SFI="01" LCSI="Operational"
+    Shareable="true" Readable="false">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>ALW</Read>
+          <Update>ADM1</Update>
+          <Resize>ADM1</Resize>
+          <Resize>ADM2</Resize>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <DeleteItself>ADM1</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+      <EFContent>
+        <EFContentType NbOfRecords="2" RecordSize="38"
+        DataGenerationType="Static">
+          <DataValue>
+          61184F10A0000000871002FF81FFFF890305000150045553494DFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="PL" FileDescription="Preferred Language"
+    FileID="2F05" FileType="TR" FilePath="3F002F05" SFI="02"
+    LCSI="Operational" Shareable="true" Readable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>ALW</Read>
+          <Update>GPIN1</Update>
+          <Resize>NEV</Resize>
+          <Activate>GPIN1</Activate>
+          <Activate>ADM1</Activate>
+          <Deactivate Operator="OR">GPIN1</Deactivate>
+          <Deactivate Operator="OR">ADM1</Deactivate>
+          <DeleteItself Operator="AND">GPIN1</DeleteItself>
+          <DeleteItself Operator="AND">ADM1</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+      <EFContent>
+        <EFContentType FileSize="6" DataGenerationType="Static">
+          <DataValue>656E00000000</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="LP" FileDescription="Language preference"
+    FileID="6F05" FileType="TR" FilePath="3F007F206F05" SFI="01"
+    LCSI="Operational" Shareable="true" Readable="false">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>ALW</Read>
+          <Update>GPIN1</Update>
+          <Resize>NEV</Resize>
+          <Activate>ADM1</Activate>
+          <Activate>ADM2</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <Deactivate>ADM2</Deactivate>
+          <DeleteItself>NEV</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+      <EFContent>
+        <EFContentType FileSize="3" DataGenerationType="Static">
+          <DataValue>000000</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="ARR" FileDescription="Access Rule Reference"
+    FileID="6F06" FileType="LF" FilePath="7F406F06"
+    LCSI="Operational" Shareable="true" Readable="false">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>GPIN1</Read>
+          <Update>GPIN1</Update>
+          <Resize>NEV</Resize>
+          <Activate>LPIN1</Activate>
+          <Deactivate>LPIN1</Deactivate>
+          <DeleteItself>LPIN1</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+      <EFContent>
+        <EFContentType NbOfRecords="2" RecordSize="28"
+        DataGenerationType="Static">
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="IMSI" FileDescription="IMSI" FileID="6F07"
+    FileType="Link" FilePath="7F406F07" SFI="01" LCSI="Operational"
+    LinkFilePath="3F007F206F07" Shareable="true" Readable="false">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>ALW</Read>
+          <Update>ADM1</Update>
+          <Resize>NEV</Resize>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <DeleteItself>ADM1</DeleteItself>
+          <DeleteItself>ADM2</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+        <OTAAccessType KeySetReference="01" TAR="B00001" />
+      </OTAAccess>
+      <EFContent />
+    </EF>
+    <EF FileName="ADN"
+    FileDescription="Abbreviated dialling numbers" FileID="6F3A"
+    FileType="LF" FilePath="3F007F106F3A" SFI="01"
+    LCSI="Operational" Shareable="true" Readable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>GPIN1</Read>
+          <Update>GPIN1</Update>
+          <Resize>ADM1</Resize>
+          <Resize>ADM2</Resize>
+          <Activate>LPIN1</Activate>
+          <Deactivate>LPIN1</Deactivate>
+          <DeleteItself>ADM1</DeleteItself>
+          <DeleteItself>ADM2</DeleteItself>
+          <EFArrID>2F06</EFArrID>
+          <EFArrRecordNb>2</EFArrRecordNb>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess />
+      <EFContent>
+        <EFContentType NbOfRecords="2" RecordSize="28"
+        DataGenerationType="Static">
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="ARR" FileDescription="Access Rule Reference"
+    FileID="2F06" FileType="LF" FilePath="3F002F06"
+    LCSI="Operational" Shareable="true" Readable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>ALW</Read>
+          <Update>ADM1</Update>
+          <Resize>NEV</Resize>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <DeleteItself>ADM1</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess>
+        <OTAAccessType KeySetReference="00" TAR="B00010" />
+      </OTAAccess>
+      <EFContent>
+        <EFContentType NbOfRecords="2" RecordSize="30"
+        DataGenerationType="Static">
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="LND" FileDescription="Last number dialled"
+    FileID="6F44" FileType="CY" FilePath="3F007F106F44" SFI="02"
+    LCSI="Operational" Shareable="true" Readable="false">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>GPIN1</Read>
+          <Update>GPIN1</Update>
+          <Increase>NEV</Increase>
+          <Resize>NEV</Resize>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <DeleteItself>NEV</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess />
+      <EFContent>
+        <EFContentType NbOfRecords="2" RecordSize="28"
+        DataGenerationType="Static">
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+          <DataValue>
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="IMSI" FileID="6F07" FileType="TR"
+    FilePath="3F007F206F07" SFI="02" LCSI="Operational"
+    Shareable="true" Readable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>GPIN1</Read>
+          <Update>ADM1</Update>
+          <Resize>NEV</Resize>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <DeleteItself>ADM1</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess />
+      <EFContent>
+        <EFContentType FileSize="9" DataGenerationType="Dynamic">
+          <DataValue>FFFFFFFFFFFFFFFFFF</DataValue>
+        </EFContentType>
+      </EFContent>
+    </EF>
+    <EF FileName="ADN"
+    FileDescription="Abbreviated dialling numbers" FileID="6F3A"
+    FileType="Link" FilePath="7F406F3A" SFI="02" LCSI="Operational"
+    LinkFilePath="3F007F106F3A" Shareable="true" Readable="false">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>GPIN1</Read>
+          <Update>GPIN1</Update>
+          <Resize>ADM1</Resize>
+          <Activate>LPIN1</Activate>
+          <Deactivate>LPIN1</Deactivate>
+          <DeleteItself>ADM1</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess />
+      <EFContent />
+    </EF>
+    <EF FileName="LND" FileDescription="Last number dialled"
+    FileID="6F44" FileType="Link" FilePath="7F406F44" SFI="03"
+    LCSI="Operational" LinkFilePath="3F007F106F44" Shareable="true"
+    Readable="true">
+      <AccessConditions2G />
+      <AccessConditions3G>
+        <EFAccessConditions3GType>
+          <Read>GPIN1</Read>
+          <Update>GPIN1</Update>
+          <Increase>NEV</Increase>
+          <Resize>NEV</Resize>
+          <Activate>ADM1</Activate>
+          <Deactivate>ADM1</Deactivate>
+          <DeleteItself>NEV</DeleteItself>
+        </EFAccessConditions3GType>
+      </AccessConditions3G>
+      <OTAAccess />
+      <EFContent />
+    </EF>
+  </CardBody>
+  <CardManagement>
+    <CHV_PUK_Settings CHV_PUKName="CHV1" CHV_PUKLength="4"
+    CHV_PUKStatus="true" CHV_PUKMaximumRetryNumber="3"
+    CHV_PUKRetryNumberLeft="3" DataGenerationType="Dynamic" />
+    <CHV_PUK_Settings CHV_PUKName="CHV2" CHV_PUKLength="4"
+    CHV_PUKStatus="true" CHV_PUKMaximumRetryNumber="3"
+    CHV_PUKRetryNumberLeft="3" DataGenerationType="Dynamic" />
+    <PIN_PUK_Settings PIN_PUKName="GPIN1" PIN_PUKLength="4"
+    PIN_PUKStatus="true" PIN_PUKMaximumRetryNumber="3"
+    PIN_PUKRetryNumberLeft="3" Mapping2G3G="CHV1"
+    DataGenerationType="Dynamic" />
+    <PIN_PUK_Settings PIN_PUKName="LPIN1" PIN_PUKLength="4"
+    PIN_PUKStatus="true" PIN_PUKMaximumRetryNumber="0"
+    PIN_PUKRetryNumberLeft="3" Mapping2G3G="CHV2"
+    DataGenerationType="Dynamic"
+    ADF_AID="A0000000871002FF81FFFF8903050001" />
+    <ADM_Settings ADMName="ADM1" ADMLength="8" ADMStatus="true"
+    ADMMaximumRetryNumber="3" ADMRetryNumberLeft="3"
+    DataGenerationType="Static" ADM_Value="3030303030303030" />
+    <ADM_Settings ADMName="ADM2" ADMLength="8" ADMStatus="true"
+    ADMMaximumRetryNumber="3" ADMRetryNumberLeft="3"
+    DataGenerationType="Static" ADM_Value="3030303030303030" />
+    <SecurityDomain SD_Name="Security Domain 1"
+    SD_AID="0000000001">
+      <SDPrivileges DAPVerificationAllowed="true"
+      DelegatedManagement="true" MandatedDAPVerification="true"
+      MinSecurityLevel="01" PriorityLevel="01" />
+      <KeySetVersionInformation>01</KeySetVersionInformation>
+      <KeySetVersionInformation>02</KeySetVersionInformation>
+    </SecurityDomain>
+    <OTASettings>
+      <UserNotificationMessage ValueOK="replacement text for successful delivery"
+      ValueNOK="replacement text for unsuccessful delivery"
+      ValueCC="replacement text for concatenated messages" />
+      <TPOA_Checking TPOA_Value="41394644363445313243"
+      TPOA_TAR="B00010" />
+      <TPOA_Checking TPOA_Value="14253775112458312458"
+      TPOA_TAR="020202" />
+    </OTASettings>
+    <Authentication>
+      <Authentication2G Authentication2GAlgorithm="COMP128-1"
+      Authentication2GCounter="41394644363445313243"
+      Algo2GMappedTo3G="true" />
+      <Authentication2G Authentication2GAlgorithm="COMP128-2"
+      Authentication2GCounter="59655368953597872212"
+      Algo2GMappedTo3G="true" />
+      <Authentication2G Authentication2GAlgorithm="COMP128-3"
+      Authentication2GCounter="12348187644398843454"
+      Algo2GMappedTo3G="true" />
+      <Authentication3G Authentication3GAlgorithm="MILENAGE"
+      Authentication3GDeltaValue="41394644363445313243"
+      Authentication3G_L_Value="11223344556677889900"
+      Authentication3GRESLength="05"
+      Authentication3G_Ri_and_Ci_ValueType="Default"
+      Authentication3GDataGeneration="Static"
+      Authentication3GAMFDefinition="00 00">
+        <Authentication3GSeqNb Authentication3GFreshnessTest="true"
+        Authentication3GAgeLimitTest="true"
+        Authentication3GWrapAroundProtection="true"
+        Authentication3GRFU="true">true</Authentication3GSeqNb>
+      </Authentication3G>
+      <Authentication3G Authentication3GAlgorithm="MILENAGE"
+      Authentication3GDeltaValue="41394644363445313243"
+      Authentication3G_L_Value="00998877665544332211"
+      Authentication3GRESLength="05"
+      Authentication3G_Ri_and_Ci_ValueType="Default"
+      Authentication3GDataGeneration="Static"
+      Authentication3GAMFDefinition="Use AMF* of incoming response">
+
+        <Authentication3GSeqNb Authentication3GFreshnessTest="true"
+        Authentication3GAgeLimitTest="true"
+        Authentication3GWrapAroundProtection="true"
+        Authentication3GRFU="true">true</Authentication3GSeqNb>
+      </Authentication3G>
+    </Authentication>
+  </CardManagement>
+  <OTA>
+    <RFMApplication>
+      <TAR>B00010</TAR>
+      <MSL>01</MSL>
+      <MSLExtension>010101</MSLExtension>
+      <KeySetVersionInformation>01</KeySetVersionInformation>
+      <KeySetVersionInformation>02</KeySetVersionInformation>
+      <TargetApplicationRFMType>
+        <TargetApplication>GSM</TargetApplication>
+      </TargetApplicationRFMType>
+      <LinkToSecurityDomain>0101010101</LinkToSecurityDomain>
+      <FileAccess>
+        <AccessDomainType>Full Access</AccessDomainType>
+        <SecurityCondition>0101</SecurityCondition>
+      </FileAccess>
+    </RFMApplication>
+    <RFMApplication>
+      <TAR>B00001</TAR>
+      <MSL>02</MSL>
+      <MSLExtension>020202</MSLExtension>
+      <KeySetVersionInformation>01</KeySetVersionInformation>
+      <KeySetVersionInformation>02</KeySetVersionInformation>
+      <TargetApplicationRFMType>
+        <TargetApplication>USIM</TargetApplication>
+        <USIM_AID>A0000000871002FF81FFFF8903050001</USIM_AID>
+      </TargetApplicationRFMType>
+      <LinkToSecurityDomain>0202020202</LinkToSecurityDomain>
+      <FileAccess>
+        <AccessDomainType>UICC APDU</AccessDomainType>
+        <SecurityCondition>0202</SecurityCondition>
+      </FileAccess>
+    </RFMApplication>
+    <RAMApplication>
+      <TAR>030303</TAR>
+      <MSL>03</MSL>
+      <MSLExtension>030303</MSLExtension>
+      <KeySetVersionInformation>01</KeySetVersionInformation>
+      <KeySetVersionInformation>02</KeySetVersionInformation>
+    </RAMApplication>
+  </OTA>
+  <KeySetSettings>
+    <KeySetVersionInformation>
+      <KeySetVersionInformationValue>01</KeySetVersionInformationValue>
+      <KeyIdentifier>
+        <KeyIdentifierValue>01</KeyIdentifierValue>
+        <KeyType>DES_CBC</KeyType>
+        <KeyLength>8</KeyLength>
+        <DataGenerationType>Static</DataGenerationType>
+        <Data>0101010101010101</Data>
+      </KeyIdentifier>
+      <KeyIdentifier>
+        <KeyIdentifierValue>02</KeyIdentifierValue>
+        <KeyType>AES</KeyType>
+        <KeyLength>8</KeyLength>
+        <DataGenerationType>Static</DataGenerationType>
+        <Data>0202020202020202</Data>
+      </KeyIdentifier>
+      <CounterValueGeneration>
+        <CounterValueGenerationType>Static</CounterValueGenerationType>
+        <Data>0101010101</Data>
+        <CounterGAP>0101010101</CounterGAP>
+      </CounterValueGeneration>
+      <CryptographicChecksumAcceptedLength>01</CryptographicChecksumAcceptedLength>
+    </KeySetVersionInformation>
+    <KeySetVersionInformation>
+      <KeySetVersionInformationValue>02</KeySetVersionInformationValue>
+      <KeyIdentifier>
+        <KeyIdentifierValue>01</KeyIdentifierValue>
+        <KeyType>3DES2_CBC</KeyType>
+        <KeyLength>24</KeyLength>
+        <DataGenerationType>Static</DataGenerationType>
+        <Data>030303030303030303030303030303030303030303030303</Data>
+      </KeyIdentifier>
+      <KeyIdentifier>
+        <KeyIdentifierValue>02</KeyIdentifierValue>
+        <KeyType>3DES3_CBC</KeyType>
+        <KeyLength>24</KeyLength>
+        <DataGenerationType>Static</DataGenerationType>
+        <Data>040404040404040404040404040404040404040404040404</Data>
+      </KeyIdentifier>
+      <CounterValueGeneration>
+        <CounterValueGenerationType>Static</CounterValueGenerationType>
+        <Data>0202020202</Data>
+        <CounterGAP>0202020202</CounterGAP>
+      </CounterValueGeneration>
+      <CryptographicChecksumAcceptedLength>02</CryptographicChecksumAcceptedLength>
+    </KeySetVersionInformation>
+  </KeySetSettings>
+  <Applets>
+    <Package>
+      <PackageProvided>true</PackageProvided>
+      <Comment>None</Comment>
+      <PackageDefinition>
+        <PackageName>Sample Package</PackageName>
+        <PackageAID>0101010101</PackageAID>
+        <FileType>CAP</FileType>
+        <FullFileName>filepath of applet to load</FullFileName>
+        <SecurityDomainAID>0101010101</SecurityDomainAID>
+        <C6>0606</C6>
+        <C7>0707</C7>
+        <C8>0808</C8>
+        <DAPKeyReference>dap key</DAPKeyReference>
+        <ApplicationPersoScript>
+          <Level>AFSC</Level>
+          <Script>Sample Script</Script>
+        </ApplicationPersoScript>
+        <SpecificFilePath>1122</SpecificFilePath>
+        <SpecificFilePath>3344</SpecificFilePath>
+      </PackageDefinition>
+      <Applet>
+        <AppletName>Applet 1</AppletName>
+        <AppletClassAID>0000000001</AppletClassAID>
+        <Instance>
+          <InstanceName>Instance 1</InstanceName>
+          <ApplicationInstanceAID>
+          0000000002</ApplicationInstanceAID>
+          <ProductionStatus>
+            <Installed>true</Installed>
+            <MadeSelectable>true</MadeSelectable>
+            <ExtraditionAID>0101010101</ExtraditionAID>
+          </ProductionStatus>
+          <C9>09</C9>
+          <C7>0707</C7>
+          <C8>0808</C8>
+          <ToolkitTag>
+            <UICCSpecific>true</UICCSpecific>
+            <PriorityLevel>01</PriorityLevel>
+            <MinSecurityLevel>010101</MinSecurityLevel>
+            <MaxMenuEntryTextLength>05</MaxMenuEntryTextLength>
+            <MaxNbOfMenuEntries>05</MaxNbOfMenuEntries>
+            <AccessDomain>
+              <AccessDomainType>Full Access</AccessDomainType>
+              <AccessDomainCode>0101</AccessDomainCode>
+            </AccessDomain>
+            <MaxNumberOfTimers>05</MaxNumberOfTimers>
+            <MenuEntriesPosition>05</MenuEntriesPosition>
+            <MaxNumberOfChannels>05</MaxNumberOfChannels>
+            <TARValue>010101</TARValue>
+            <TARValue>020202</TARValue>
+            <UICCDAPSignature>01</UICCDAPSignature>
+            <UICCAccessApplicationParameters>
+              <ADFAID>0101010101</ADFAID>
+              <AccessDomain>
+                <AccessDomainType>UICC APDU</AccessDomainType>
+                <AccessDomainCode>0101</AccessDomainCode>
+              </AccessDomain>
+              <AccessDomainDAP>01</AccessDomainDAP>
+            </UICCAccessApplicationParameters>
+            <UICCAccessApplicationParameters>
+              <ADFAID>0202020202</ADFAID>
+              <AccessDomain>
+                <AccessDomainType>APDU Mechanism</AccessDomainType>
+                <AccessDomainCode>0202</AccessDomainCode>
+              </AccessDomain>
+              <AccessDomainDAP>02</AccessDomainDAP>
+            </UICCAccessApplicationParameters>
+            <MaxNumberOfService>05</MaxNumberOfService>
+            <UICCAdministrativeAccessApplicationParameters>
+              <ADFAID>0303030303</ADFAID>
+              <AdministrativeAccessDomain>
+                <AccessDomainType>Full Access</AccessDomainType>
+                <AccessDomainCode>0303</AccessDomainCode>
+              </AdministrativeAccessDomain>
+              <AdministrativeAccessDomainDAP>
+              03</AdministrativeAccessDomainDAP>
+            </UICCAdministrativeAccessApplicationParameters>
+            <UICCAdministrativeAccessApplicationParameters>
+              <ADFAID>0404040404</ADFAID>
+              <AdministrativeAccessDomain>
+                <AccessDomainType>APDU Mechanism</AccessDomainType>
+                <AccessDomainCode>0404</AccessDomainCode>
+              </AdministrativeAccessDomain>
+              <AdministrativeAccessDomainDAP>
+              04</AdministrativeAccessDomainDAP>
+            </UICCAdministrativeAccessApplicationParameters>
+            <UICCAdministrativeAccessApplicationParameters>
+              <ADFAID>0505050505</ADFAID>
+              <AdministrativeAccessDomain>
+                <AccessDomainType>UICC APDU</AccessDomainType>
+                <AccessDomainCode>0505</AccessDomainCode>
+              </AdministrativeAccessDomain>
+              <AdministrativeAccessDomainDAP>
+              05</AdministrativeAccessDomainDAP>
+            </UICCAdministrativeAccessApplicationParameters>
+          </ToolkitTag>
+        </Instance>
+      </Applet>
+    </Package>
+  </Applets>
+</CardProfile>

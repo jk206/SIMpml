@@ -1,0 +1,1475 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema xmlns="http://www.simalliance.org/SIMProfile/2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" id="NewDataSet" targetNamespace="http://www.simalliance.org/SIMProfile/2.0">
+  <xs:simpleType name="Common_String_Type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Free_Text_Type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="32768"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SMSString_Type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="140"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ScriptString_Type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="262144"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Byte_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:length value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TwoBytes_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TwoOrThreeBytes_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:minLength value="2"/>
+      <xs:maxLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ThreeBytes_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:length value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="HexString_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="256"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MF_DF_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MF"/>
+      <xs:enumeration value="DF"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FileID_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:length value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="FilePath_Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([0-9A-F]{4}){1,6})"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AID_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:minLength value="5"/>
+      <xs:maxLength value="16"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AID_FileType_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="USIM"/>
+      <xs:enumeration value="ISIM"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EF_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TR"/>
+      <xs:enumeration value="LF"/>
+      <xs:enumeration value="CY"/>
+      <xs:enumeration value="Link"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LCSI_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Operational"/>
+      <xs:enumeration value="Not Operational"/>
+      <xs:enumeration value="Initialised"/>
+      <xs:enumeration value="Not Initialised"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccessConditions2GValueEnum_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALW"/>
+      <xs:enumeration value="CHV1"/>
+      <xs:enumeration value="CHV2"/>
+      <xs:enumeration value="ADM1"/>
+      <xs:enumeration value="ADM2"/>
+      <xs:enumeration value="ADM3"/>
+      <xs:enumeration value="ADM4"/>
+      <xs:enumeration value="ADM5"/>
+      <xs:enumeration value="ADM6"/>
+      <xs:enumeration value="ADM7"/>
+      <xs:enumeration value="ADM8"/>
+      <xs:enumeration value="ADM9"/>
+      <xs:enumeration value="ADM10"/>
+      <xs:enumeration value="ADM11"/>
+      <xs:enumeration value="NEV"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccessConditions3GValueEnum_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALW"/>
+      <xs:enumeration value="UPIN"/>
+      <xs:enumeration value="GPIN1"/>
+      <xs:enumeration value="GPIN2"/>
+      <xs:enumeration value="GPIN3"/>
+      <xs:enumeration value="GPIN4"/>
+      <xs:enumeration value="GPIN5"/>
+      <xs:enumeration value="GPIN6"/>
+      <xs:enumeration value="GPIN7"/>
+      <xs:enumeration value="GPIN8"/>
+      <xs:enumeration value="LPIN1"/>
+      <xs:enumeration value="LPIN2"/>
+      <xs:enumeration value="LPIN3"/>
+      <xs:enumeration value="LPIN4"/>
+      <xs:enumeration value="LPIN5"/>
+      <xs:enumeration value="LPIN6"/>
+      <xs:enumeration value="LPIN7"/>
+      <xs:enumeration value="LPIN8"/>
+      <xs:enumeration value="ADM1"/>
+      <xs:enumeration value="ADM2"/>
+      <xs:enumeration value="ADM3"/>
+      <xs:enumeration value="ADM4"/>
+      <xs:enumeration value="ADM5"/>
+      <xs:enumeration value="ADM6"/>
+      <xs:enumeration value="ADM7"/>
+      <xs:enumeration value="ADM8"/>
+      <xs:enumeration value="ADM9"/>
+      <xs:enumeration value="ADM10"/>
+      <xs:enumeration value="NEV"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KeySetVersionInformation_Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="0[1-9A-F]|[1-7][0-9A-F]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KeySetReference_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="00"/>
+      <xs:enumeration value="01"/>
+      <xs:enumeration value="02"/>
+      <xs:enumeration value="03"/>
+      <xs:enumeration value="04"/>
+      <xs:enumeration value="05"/>
+      <xs:enumeration value="06"/>
+      <xs:enumeration value="07"/>
+      <xs:enumeration value="08"/>
+      <xs:enumeration value="09"/>
+      <xs:enumeration value="0A"/>
+      <xs:enumeration value="0B"/>
+      <xs:enumeration value="0C"/>
+      <xs:enumeration value="0D"/>
+      <xs:enumeration value="0E"/>
+      <xs:enumeration value="0F"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TAR_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:length value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DataGenerationKind_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Static"/>
+      <xs:enumeration value="Dynamic"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EFNbOfRecords_Type">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="254"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EFRecordSize_Type">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EFFileSize_Type">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="65535"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PackageFileType_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LOP"/>
+      <xs:enumeration value="IJC"/>
+      <xs:enumeration value="CAP"/>
+      <xs:enumeration value="HEX"/>
+      <xs:enumeration value="JAR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ApplicationPersoScriptLevel_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BFSC"/>
+      <xs:enumeration value="AFSC"/>
+      <xs:enumeration value="AI"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccessDomainType_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Full Access"/>
+      <xs:enumeration value="No Access"/>
+      <xs:enumeration value="APDU Mechanism"/>
+      <xs:enumeration value="UICC APDU"/>
+      <xs:enumeration value="RFU"/>
+      <xs:enumeration value="Proprietary"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Voltage_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="1.8V"/>
+      <xs:enumeration value="3V"/>
+      <xs:enumeration value="5V"/>
+      <xs:enumeration value="1.8V to 3V"/>
+      <xs:enumeration value="1.8V to 5V"/>
+      <xs:enumeration value="3V to 5V"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ClockStopMode_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Clock stop allowed"/>
+      <xs:enumeration value="No preferred level"/>
+      <xs:enumeration value="High level preferred"/>
+      <xs:enumeration value="Low level preferred"/>
+      <xs:enumeration value="Clock stop not allowed"/>
+      <xs:enumeration value="Never"/>
+      <xs:enumeration value="Unless at high level"/>
+      <xs:enumeration value="Unless at low level"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CardTechnology_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SIM (2G only)"/>
+      <xs:enumeration value="USIM (3G only)"/>
+      <xs:enumeration value="CombiCard (2G and 3G)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KeyIdentifierValue_Type">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-7][0-9A-F]"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Re-Entry">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FormattedSMSPPEnv"/>
+      <xs:enumeration value="UnformattedSMSPPEnv"/>
+      <xs:enumeration value="FormattedSMSCB"/>
+      <xs:enumeration value="UnformattedSMSCB"/>
+      <xs:enumeration value="MenuSelection"/>
+      <xs:enumeration value="MenuSelectionHelpRequest"/>
+      <xs:enumeration value="TimerExpiration"/>
+      <xs:enumeration value="EventDownload"/>
+      <xs:enumeration value="UnrecognizedEnvelope"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KeyType_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DES_CBC"/>
+      <xs:enumeration value="3DES2_CBC"/>
+      <xs:enumeration value="3DES3_CBC"/>
+      <xs:enumeration value="DES_ECB"/>
+      <xs:enumeration value="AES"/>
+      <xs:enumeration value="RSA"/>
+      <xs:enumeration value="Proprietary"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="KeyLength_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="8"/>
+      <xs:enumeration value="16"/>
+      <xs:enumeration value="24"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MSL_Hex_Type">
+    <xs:restriction base="xs:hexBinary">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="3"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CHV_PUKName_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CHV1"/>
+      <xs:enumeration value="CHV2"/>
+      <xs:enumeration value="PUK1"/>
+      <xs:enumeration value="PUK2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PIN_PUKName_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UPIN"/>
+      <xs:enumeration value="GPIN1"/>
+      <xs:enumeration value="GPIN2"/>
+      <xs:enumeration value="GPIN3"/>
+      <xs:enumeration value="GPIN4"/>
+      <xs:enumeration value="GPIN5"/>
+      <xs:enumeration value="GPIN6"/>
+      <xs:enumeration value="GPIN7"/>
+      <xs:enumeration value="GPIN8"/>
+      <xs:enumeration value="GPUK1"/>
+      <xs:enumeration value="GPUK2"/>
+      <xs:enumeration value="GPUK3"/>
+      <xs:enumeration value="GPUK4"/>
+      <xs:enumeration value="GPUK5"/>
+      <xs:enumeration value="GPUK6"/>
+      <xs:enumeration value="GPUK7"/>
+      <xs:enumeration value="GPUK8"/>
+      <xs:enumeration value="LPIN1"/>
+      <xs:enumeration value="LPIN2"/>
+      <xs:enumeration value="LPIN3"/>
+      <xs:enumeration value="LPIN4"/>
+      <xs:enumeration value="LPIN5"/>
+      <xs:enumeration value="LPIN6"/>
+      <xs:enumeration value="LPIN7"/>
+      <xs:enumeration value="LPIN8"/>
+      <xs:enumeration value="LPUK1"/>
+      <xs:enumeration value="LPUK2"/>
+      <xs:enumeration value="LPUK3"/>
+      <xs:enumeration value="LPUK4"/>
+      <xs:enumeration value="LPUK5"/>
+      <xs:enumeration value="LPUK6"/>
+      <xs:enumeration value="LPUK7"/>
+      <xs:enumeration value="LPUK8"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Mapping2G3G_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CHV1"/>
+      <xs:enumeration value="CHV2"/>
+      <xs:enumeration value="ADM1"/>
+      <xs:enumeration value="ADM2"/>
+      <xs:enumeration value="ADM3"/>
+      <xs:enumeration value="ADM4"/>
+      <xs:enumeration value="ADM5"/>
+      <xs:enumeration value="ADM6"/>
+      <xs:enumeration value="ADM7"/>
+      <xs:enumeration value="ADM8"/>
+      <xs:enumeration value="ADM9"/>
+      <xs:enumeration value="ADM10"/>
+      <xs:enumeration value="ADM11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ADMName_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADM1"/>
+      <xs:enumeration value="ADM2"/>
+      <xs:enumeration value="ADM3"/>
+      <xs:enumeration value="ADM4"/>
+      <xs:enumeration value="ADM5"/>
+      <xs:enumeration value="ADM6"/>
+      <xs:enumeration value="ADM7"/>
+      <xs:enumeration value="ADM8"/>
+      <xs:enumeration value="ADM9"/>
+      <xs:enumeration value="ADM10"/>
+      <xs:enumeration value="ADM11"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CHV_PIN_ADM_Value">
+    <xs:restriction base="xs:hexBinary">
+      <xs:length value="8"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CHV_PIN_PUKLength_Type">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="4"/>
+      <xs:maxInclusive value="8"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CHV_PIN_PUKMaximumRetryNumber_Type">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CHV_PIN_PUKRetryNumberLeft_Type">
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="255"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Operator_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OR"/>
+      <xs:enumeration value="AND"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TargetApplication_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GSM"/>
+      <xs:enumeration value="USIM"/>
+      <xs:enumeration value="UICC"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Authentication3GAMFDefinition_Type">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="00 00"/>
+      <xs:enumeration value="Use AMF* of incoming response"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AccessConditions3GValueType">
+    <xs:simpleContent>
+      <xs:extension base="AccessConditions3GValueEnum_Type">
+        <xs:attribute name="Operator" type="Operator_Type"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="MobileCode_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="3"/>
+      <xs:pattern value="([0-9]*)"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DFAccessConditions2GType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Create" type="AccessConditions2GValueEnum_Type"/>
+        <xs:element name="Delete" type="AccessConditions2GValueEnum_Type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DFAccessConditions3GType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="29" name="DeleteSelf" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="TerminateDF" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="Activate" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="Deactivate" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="CreateChildDF" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="CreateChildEF" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="DeleteChild" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="EFArrID" type="FileID_Type"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="EFArrRecordNb" type="EFNbOfRecords_Type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EFAccessConditions2GType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Read" type="AccessConditions2GValueEnum_Type"/>
+        <xs:element name="Update" type="AccessConditions2GValueEnum_Type"/>
+        <xs:element minOccurs="0" name="Increase" type="AccessConditions2GValueEnum_Type"/>
+        <xs:element name="Resize" type="AccessConditions2GValueEnum_Type"/>
+        <xs:element name="Rehabilitate" type="AccessConditions2GValueEnum_Type"/>
+        <xs:element name="Invalidate" type="AccessConditions2GValueEnum_Type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EFAccessConditions3GType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="29" name="Read" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="Update" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" minOccurs="0" name="Increase" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="Resize" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="Activate" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="Deactivate" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="29" name="DeleteItself" type="AccessConditions3GValueType"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="EFArrID" type="FileID_Type"/>
+        <xs:element maxOccurs="1" minOccurs="0" name="EFArrRecordNb" type="EFNbOfRecords_Type"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OTAAccessType">
+    <xs:complexType>
+      <xs:attribute name="KeySetReference" type="KeySetReference_Type" use="required"/>
+      <xs:attribute name="TAR" type="TAR_Type" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EFContentType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="254" minOccurs="0" name="DataValue" type="xs:hexBinary"/>
+      </xs:sequence>
+      <xs:attribute name="NbOfRecords" type="EFNbOfRecords_Type"/>
+      <xs:attribute name="RecordSize" type="EFRecordSize_Type"/>
+      <xs:attribute name="FileSize" type="EFFileSize_Type"/>
+      <xs:attribute name="DataGenerationType" type="DataGenerationKind_Type" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CHV_PUK_Settings">
+    <xs:complexType>
+      <xs:attribute name="CHV_PUKName" type="CHV_PUKName_Type" use="required"/>
+      <xs:attribute name="CHV_PUKLength" type="CHV_PIN_PUKLength_Type" use="required"/>
+      <xs:attribute name="CHV_PUKStatus" type="xs:boolean" use="required"/>
+      <xs:attribute name="CHV_PUKMaximumRetryNumber" type="CHV_PIN_PUKMaximumRetryNumber_Type" use="required"/>
+      <xs:attribute name="CHV_PUKRetryNumberLeft" type="CHV_PIN_PUKRetryNumberLeft_Type" use="optional"/>
+      <xs:attribute name="DataGenerationType" type="DataGenerationKind_Type" use="required"/>
+      <xs:attribute name="CHV_PUK_Value" type="CHV_PIN_ADM_Value" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PIN_PUK_Settings">
+    <xs:complexType>
+      <xs:attribute name="PIN_PUKName" type="PIN_PUKName_Type" use="required"/>
+      <xs:attribute name="PIN_PUKLength" type="CHV_PIN_PUKLength_Type" use="required"/>
+      <xs:attribute name="PIN_PUKStatus" type="xs:boolean" use="required"/>
+      <xs:attribute name="PIN_PUKMaximumRetryNumber" type="CHV_PIN_PUKMaximumRetryNumber_Type" use="required"/>
+      <xs:attribute name="PIN_PUKRetryNumberLeft" type="CHV_PIN_PUKRetryNumberLeft_Type" use="optional"/>
+      <xs:attribute name="Mapping2G3G" type="Mapping2G3G_Type" use="optional"/>
+      <xs:attribute name="DataGenerationType" type="DataGenerationKind_Type" use="required"/>
+      <xs:attribute name="ADF_AID" type="AID_Type" use="optional"/>
+      <xs:attribute name="PIN_PUK_Value" type="CHV_PIN_ADM_Value" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ADM_Settings">
+    <xs:complexType>
+      <xs:attribute name="ADMName" type="ADMName_Type" use="required"/>
+      <xs:attribute name="ADMLength" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="8"/>
+            <xs:maxInclusive value="8"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="ADMStatus" type="xs:boolean" use="required"/>
+      <xs:attribute name="ADMMaximumRetryNumber" type="CHV_PIN_PUKMaximumRetryNumber_Type" use="required"/>
+      <xs:attribute name="ADMRetryNumberLeft" type="CHV_PIN_PUKRetryNumberLeft_Type" use="optional"/>
+      <xs:attribute name="DataGenerationType" type="DataGenerationKind_Type" use="required"/>
+      <xs:attribute name="ADM_Value" type="CHV_PIN_ADM_Value" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SDPrivileges">
+    <xs:complexType>
+      <xs:attribute name="DAPVerificationAllowed" type="xs:boolean" use="required"/>
+      <xs:attribute name="DelegatedManagement" type="xs:boolean" use="required"/>
+      <xs:attribute name="MandatedDAPVerification" type="xs:boolean" use="required"/>
+      <xs:attribute name="MinSecurityLevel" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="MSL_Hex_Type">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="PriorityLevel" type="Byte_Type" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserNotificationMessage">
+    <xs:complexType>
+      <xs:attribute name="ValueOK" type="SMSString_Type" use="optional"/>
+      <xs:attribute name="ValueNOK" type="SMSString_Type" use="optional"/>
+      <xs:attribute name="ValueCC" type="SMSString_Type" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TPOA_Checking">
+    <xs:complexType>
+      <xs:attribute name="TPOA_Value" type="xs:hexBinary"/>
+      <xs:attribute name="TPOA_TAR">
+        <xs:simpleType>
+          <xs:restriction base="ThreeBytes_Type">
+            <xs:length value="3"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SecurityDomain">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="SDPrivileges"/>
+        <xs:element maxOccurs="127" name="KeySetVersionInformation" type="KeySetVersionInformation_Type"/>
+      </xs:sequence>
+      <xs:attribute name="SD_Name" use="required"/>
+      <xs:attribute name="SD_AID" type="AID_Type" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OTASettings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" ref="UserNotificationMessage"/>
+        <xs:element maxOccurs="10" minOccurs="0" ref="TPOA_Checking"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authentication2G">
+    <xs:complexType>
+      <xs:attribute name="Authentication2GAlgorithm" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="COMP128-1"/>
+            <xs:enumeration value="COMP128-2"/>
+            <xs:enumeration value="COMP128-3"/>
+            <xs:enumeration value="COMP128-4 (AES)"/>
+            <xs:enumeration value="COMP128-4 (GSM-MILENAGE)"/>
+            <xs:enumeration value="XOR"/>
+            <xs:enumeration value="Proprietary"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Authentication2GCounter" type="xs:hexBinary" use="optional"/>
+      <xs:attribute name="Algo2GMappedTo3G" type="xs:boolean" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authentication3GSeqNb">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:boolean">
+          <xs:attribute name="Authentication3GFreshnessTest" type="xs:boolean"/>
+          <xs:attribute name="Authentication3GAgeLimitTest" type="xs:boolean"/>
+          <xs:attribute name="Authentication3GWrapAroundProtection" type="xs:boolean"/>
+          <xs:attribute name="Authentication3GRFU" type="xs:boolean"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authentication3G">
+    <xs:complexType>
+      <xs:all>
+        <xs:element minOccurs="0" ref="Authentication3GSeqNb"/>
+      </xs:all>
+      <xs:attribute name="Authentication3GAlgorithm" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="MILENAGE"/>
+            <xs:enumeration value="Dummy"/>
+            <xs:enumeration value="Proprietary"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Authentication3GDeltaValue" type="xs:hexBinary" use="optional"/>
+      <xs:attribute name="Authentication3G_L_Value" type="xs:hexBinary" use="optional"/>
+      <xs:attribute name="Authentication3GRESLength" type="Byte_Type" use="required"/>
+      <xs:attribute name="Authentication3G_Ri_and_Ci_ValueType" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Default"/>
+            <xs:enumeration value="Customer Specific"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="Authentication3GDataGeneration" type="DataGenerationKind_Type" use="required"/>
+      <xs:attribute name="Authentication3GAMFDefinition" type="Authentication3GAMFDefinition_Type" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Authentication">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="Authentication2G"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="Authentication3G"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Applet">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AppletName" type="Common_String_Type">
+          <xs:annotation>
+            <xs:documentation>Name of the applet as specified in
+            the code file</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="AppletClassAID" type="AID_Type">
+          <xs:annotation>
+            <xs:documentation>The AID of the applet
+            class</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element maxOccurs="256" minOccurs="0" name="Instance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InstanceName" type="Common_String_Type">
+                <xs:annotation>
+                  <xs:documentation>Applet name as specified in
+                  code file</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ApplicationInstanceAID" type="AID_Type">
+                <xs:annotation>
+                  <xs:documentation>The AID to be assigned to the
+                  instantiation of the applet - See spec Open
+                  Platform 2.1.1</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ProductionStatus">
+                <xs:annotation>
+                  <xs:documentation>This defines the state of the
+                  applet after perso</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Installed" type="xs:boolean">
+                      <xs:annotation>
+                        <xs:documentation>Is this applet installed:
+                        true | false</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="MadeSelectable" type="xs:boolean">
+                      <xs:annotation>
+                        <xs:documentation>Is this applet made
+                        selectable: true | false</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="ExtraditionAID" type="AID_Type">
+                      <xs:annotation>
+                        <xs:documentation>AID of the SD after
+                        installation</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="C9" type="HexString_Type">
+                <xs:annotation>
+                  <xs:documentation>Application Specific
+                  Parameters</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="C7" type="TwoBytes_Type">
+                <xs:annotation>
+                  <xs:documentation>Installation Volatile Memory
+                  sizes</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="C8" type="TwoBytes_Type">
+                <xs:annotation>
+                  <xs:documentation>Installation Non Volatile
+                  Memory size</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="0" name="ToolkitTag">
+                <xs:annotation>
+                  <xs:documentation>Toolkit Applet specific
+                  Parameters ? 03.48 section
+                  A.1.1.4.2.1</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="UICCSpecific" type="xs:boolean">
+                      <xs:annotation>
+                        <xs:documentation>This is a flag to be
+                        positioned according to the spec 102.226
+                        (section8.2.1.3.2.2): true |
+                        false</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="PriorityLevel" type="Byte_Type">
+                      <xs:annotation>
+                        <xs:documentation>Applet
+                        Priority</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="MinSecurityLevel" type="ThreeBytes_Type">
+                      <xs:annotation>
+                        <xs:documentation>Applet level
+                        MSL</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="MaxMenuEntryTextLength" type="Byte_Type">
+                      <xs:annotation>
+                        <xs:documentation>Menu Entry Max
+                        Length</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="MaxNbOfMenuEntries" type="Byte_Type">
+                      <xs:annotation>
+                        <xs:documentation>Number of Entries to
+                        allocate</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="AccessDomain">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="AccessDomainType" type="AccessDomainType_Type">
+                            <xs:annotation>
+                              <xs:documentation>Type of Access
+                              domain: Full Access | No Access |
+                              APDU Mechanism | UICC APDU | RFU |
+                              Proprietary</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="AccessDomainCode" type="TwoOrThreeBytes_Type">
+                            <xs:annotation>
+                              <xs:documentation>Files Access right
+                              for the application when APDU
+                              mechanism and UICC APDU is
+                              selected</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="MaxNumberOfTimers" type="Byte_Type">
+                      <xs:annotation>
+                        <xs:documentation>Maximum number of timers
+                        allowed</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="MenuEntriesPosition" type="HexString_Type">
+                      <xs:annotation>
+                        <xs:documentation>Menu entries
+                        position</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="MaxNumberOfChannels" type="Byte_Type">
+                      <xs:annotation>
+                        <xs:documentation>Maximum number of
+                        channels</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="256" minOccurs="0" name="TARValue" type="ThreeBytes_Type">
+                      <xs:annotation>
+                        <xs:documentation>Assigned TAR values (1Or
+                        more) (Rel6)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="UICCDAPSignature" type="HexString_Type">
+                      <xs:annotation>
+                        <xs:documentation>UICC Toolkit Parameters
+                        DAP Signature (Rel6)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="256" minOccurs="0" name="UICCAccessApplicationParameters">
+                      <xs:annotation>
+                        <xs:documentation>UICC Access Application
+                        Parameters (Rel6)</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ADFAID" type="AID_Type">
+                            <xs:annotation>
+                              <xs:documentation>If empty, if refers
+                              to UICC</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="AccessDomain">
+                            <xs:annotation>
+                              <xs:documentation>Access Domain for
+                              the ADF</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="AccessDomainType" type="AccessDomainType_Type">
+                                  <xs:annotation>
+                                    <xs:documentation>Type of
+                                    Access domain: Full Access | No
+                                    Access | APDU mechanism | UICC
+                                    APDU | RFU |
+                                    Proprietary</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="AccessDomainCode" type="TwoOrThreeBytes_Type">
+                                  <xs:annotation>
+                                    <xs:documentation>Files Access
+                                    right for the application when
+                                    APDU mechanism and UICC APDU is
+                                    selected (See section 102.226
+                                    8.2.1.3.2.5.2)</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="AccessDomainDAP" type="HexString_Type">
+                            <xs:annotation>
+                              <xs:documentation>Access Domain
+                              DAP</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="MaxNumberOfService" type="Byte_Type">
+                      <xs:annotation>
+                        <xs:documentation>Maximum number of
+                        services for this application
+                        instance</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element maxOccurs="256" minOccurs="0" name="UICCAdministrativeAccessApplicationParameters">
+                      <xs:annotation>
+                        <xs:documentation>UICC Administrative
+                        Access Application Parameters
+                        (Rel6)</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ADFAID" type="AID_Type">
+                            <xs:annotation>
+                              <xs:documentation>If empty, if refers
+                              to UICC</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element name="AdministrativeAccessDomain">
+
+                            <xs:annotation>
+                              <xs:documentation>Administrative
+                              Access Domain for the
+                              ADF</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="AccessDomainType" type="AccessDomainType_Type">
+                                  <xs:annotation>
+                                    <xs:documentation>Type of
+                                    Access domain: Full Access | No
+                                    Access | APDU mechanism | UICC
+                                    APDU | RFU |
+                                    Proprietary</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="AccessDomainCode" type="TwoOrThreeBytes_Type">
+                                  <xs:annotation>
+                                    <xs:documentation>Files Access
+                                    right for the application when
+                                    APDU mechanism and UICC APDU is
+                                    selected (See section 102.226
+                                    8.2.1.3.2.5.2)</xs:documentation>
+                                  </xs:annotation>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="AdministrativeAccessDomainDAP" type="HexString_Type">
+                            <xs:annotation>
+                              <xs:documentation>Administrative
+                              Access Domain DAP</xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Package">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PackageProvided" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>This defines if the package is
+            delivered by the customer: true |
+            false</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="Comment" type="Free_Text_Type">
+          <xs:annotation>
+            <xs:documentation>Details about the package to load if
+            it?s not provided</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" ref="PackageDefinition"/>
+        <xs:element maxOccurs="256" ref="Applet"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PackageDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PackageName" type="Common_String_Type">
+          <xs:annotation>
+            <xs:documentation>Name of the package as specified in
+            the CAP file</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="PackageAID" type="AID_Type">
+          <xs:annotation>
+            <xs:documentation>The AID of a Javacard
+            Package</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="FileType" type="PackageFileType_Type">
+          <xs:annotation>
+            <xs:documentation>This defines the type of package sent
+            by the customer. The value shall be as follows: LOP |
+            IJC | CAP | HEX| JAR</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="FullFileName" type="Common_String_Type">
+          <xs:annotation>
+            <xs:documentation>Defines the path to the file that
+            contain the applet to load</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="FilePackageSignature" type="Common_String_Type">
+          <xs:annotation>
+            <xs:documentation>Defines the MD5 signature of Applet
+            Package File</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="SecurityDomainAID" type="AID_Type">
+          <xs:annotation>
+            <xs:documentation>See spec Open Platform
+            2.1.1</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="C6" type="TwoBytes_Type">
+          <xs:annotation>
+            <xs:documentation>Package Non volatile Memory
+            size</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="C7" type="TwoBytes_Type">
+          <xs:annotation>
+            <xs:documentation>Installation Volatile Memory
+            sizes</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="C8" type="TwoBytes_Type">
+          <xs:annotation>
+            <xs:documentation>Installation Non Volatile Memory
+            size</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="DAPKeyReference" type="Common_String_Type">
+          <xs:annotation>
+            <xs:documentation>This defines the DAP key to
+            use</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" name="ApplicationPersoScript">
+          <xs:annotation>
+            <xs:documentation>This describes the specific perso
+            scripts</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Level" type="ApplicationPersoScriptLevel_Type">
+                <xs:annotation>
+                  <xs:documentation>This describes the level where
+                  the specific perso scripts must be run. The
+                  values are as follows: BFSC | AFSC |
+                  AI</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Script" type="ScriptString_Type">
+                <xs:annotation>
+                  <xs:documentation>Command to be executed for
+                  applet personalisation</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="SpecificFilePath" type="FilePath_Type">
+          <xs:annotation>
+            <xs:documentation>This defines the path of the files
+            specific to a package</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Header">
+    <xs:annotation>
+      <xs:documentation>XML Tag
+      List/Requirements</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TemplateInformation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:annotation>
+                <xs:documentation>Template
+                Information</xs:documentation>
+              </xs:annotation>
+              <xs:element name="TemplateVersion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateOfIssuance" type="xs:date"/>
+              <xs:element name="XMLValidated" type="xs:boolean"/>
+              <xs:element minOccurs="0" name="TemplateVersionHistory">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="XMLToolInformation">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Comments">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SIMCardProfileReference">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:annotation>
+                <xs:documentation>SIM Card Profile
+                Reference</xs:documentation>
+              </xs:annotation>
+              <xs:element name="MobileCountryCode" type="MobileCode_Type"/>
+              <xs:element name="MobileNetworkCode" type="MobileCode_Type"/>
+              <xs:element name="ProfileName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProfileVersion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProfileRevision">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:length value="2"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateOfIssuance" type="xs:date"/>
+              <xs:element name="Issuer">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="RevisionHistory">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="256"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CustomerSpecificRequirements">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:annotation>
+                <xs:documentation>Customer Specific
+                Requirements</xs:documentation>
+              </xs:annotation>
+              <xs:element minOccurs="0" name="PPS" type="Byte_Type"/>
+              <xs:element minOccurs="0" name="Voltage" type="Voltage_Type"/>
+              <xs:element minOccurs="0" name="ProprietaryAlgorithm" type="Common_String_Type"/>
+              <xs:element minOccurs="0" name="ClockStopMode" type="ClockStopMode_Type"/>
+              <xs:element name="CardTechnology" type="CardTechnology_Type"/>
+              <xs:element minOccurs="0" name="NumberIncomingMessages" type="Byte_Type"/>
+              <xs:element minOccurs="0" name="NumberOutgoingMessages" type="Byte_Type"/>
+              <xs:element minOccurs="0" name="DataDownloadviaUPDATERECORD" type="xs:boolean"/>
+              <xs:element maxOccurs="9" minOccurs="0" name="Re-entrance" type="Re-Entry"/>
+              <xs:element minOccurs="0" name="BIP" type="xs:boolean"/>
+              <xs:element minOccurs="0" name="Comments" type="Free_Text_Type"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CardBody">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="MF_DF">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element name="AccessConditions2G">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="DFAccessConditions2GType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AccessConditions3G">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="DFAccessConditions3GType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OTAAccess">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="16" minOccurs="0" ref="OTAAccessType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="FileName" type="Common_String_Type" use="required"/>
+            <xs:attribute name="FileDescription" type="Free_Text_Type"/>
+            <xs:attribute name="FileID" type="FileID_Type" use="required"/>
+            <xs:attribute name="FileType" type="MF_DF_Type" use="required"/>
+            <xs:attribute name="FilePath" type="FilePath_Type" use="required"/>
+            <xs:attribute name="Shareable" type="xs:boolean" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="ADF">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element name="AccessConditions2G">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="DFAccessConditions2GType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AccessConditions3G">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="DFAccessConditions3GType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OTAAccess">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="16" minOccurs="0" ref="OTAAccessType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="FileName" type="Common_String_Type" use="required"/>
+            <xs:attribute name="FileDescription" type="Free_Text_Type"/>
+            <xs:attribute name="FileID" type="FileID_Type" use="required"/>
+            <xs:attribute name="AID" type="AID_Type" use="required"/>
+            <xs:attribute name="FileType" type="AID_FileType_Type" use="required"/>
+            <xs:attribute name="FilePath" type="FilePath_Type" use="required"/>
+            <xs:attribute name="AID_ETSI_102226_DAP" type="AID_Type"/>
+            <xs:attribute name="Shareable" type="xs:boolean" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="EF">
+          <xs:complexType>
+            <xs:sequence minOccurs="0">
+              <xs:element name="AccessConditions2G">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="EFAccessConditions2GType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="AccessConditions3G">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="EFAccessConditions3GType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OTAAccess">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="16" minOccurs="0" ref="OTAAccessType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="EFContent">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="EFContentType"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="FileName" type="Common_String_Type" use="required"/>
+            <xs:attribute name="FileDescription" type="Free_Text_Type"/>
+            <xs:attribute name="FileID" type="FileID_Type" use="required"/>
+            <xs:attribute name="FileType" type="EF_Type" use="required"/>
+            <xs:attribute name="FilePath" type="FilePath_Type" use="required"/>
+            <xs:attribute name="SFI" type="Byte_Type"/>
+            <xs:attribute name="LCSI" type="LCSI_Type" use="required"/>
+            <xs:attribute name="LinkFilePath" type="FilePath_Type" use="optional"/>
+            <xs:attribute name="Shareable" type="xs:boolean" use="optional"/>
+            <xs:attribute name="Readable" type="xs:boolean" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Comment" type="Free_Text_Type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CardManagement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="CHV_PUK_Settings"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="PIN_PUK_Settings"/>
+        <xs:element maxOccurs="11" ref="ADM_Settings"/>
+        <xs:element maxOccurs="unbounded" minOccurs="0" ref="SecurityDomain"/>
+        <xs:element minOccurs="0" ref="OTASettings"/>
+        <xs:element ref="Authentication"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OTA">
+    <xs:annotation>
+      <xs:documentation>OTA Access
+      Conditions/Applications</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="16" minOccurs="0" name="RFMApplication">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:annotation>
+                <xs:documentation>RFM
+                Application</xs:documentation>
+              </xs:annotation>
+              <xs:element name="TAR" type="ThreeBytes_Type"/>
+              <xs:element name="MSL" type="Byte_Type"/>
+              <xs:element minOccurs="0" name="MSLExtension" type="ThreeBytes_Type"/>
+              <xs:element maxOccurs="16" name="KeySetVersionInformation" type="KeySetVersionInformation_Type"/>
+              <xs:element name="TargetApplicationRFMType">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:annotation>
+                      <xs:documentation>Target Application/RFM
+                      type</xs:documentation>
+                    </xs:annotation>
+                    <xs:element name="TargetApplication" type="TargetApplication_Type"/>
+                    <xs:element minOccurs="0" name="USIM_AID" type="AID_Type"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="LinkToSecurityDomain" type="AID_Type"/>
+              <xs:element name="FileAccess">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:annotation>
+                      <xs:documentation>
+                      FileAccess</xs:documentation>
+                    </xs:annotation>
+                    <xs:element name="AccessDomainType" type="AccessDomainType_Type"/>
+                    <xs:element minOccurs="0" name="SecurityCondition" type="TwoOrThreeBytes_Type"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="RAMApplication">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:annotation>
+                <xs:documentation>RAM
+                Application</xs:documentation>
+              </xs:annotation>
+              <xs:element name="TAR" type="ThreeBytes_Type"/>
+              <xs:element name="MSL" type="Byte_Type"/>
+              <xs:element minOccurs="0" name="MSLExtension" type="ThreeBytes_Type"/>
+              <xs:element maxOccurs="16" name="KeySetVersionInformation" type="KeySetVersionInformation_Type"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KeySetSettings">
+    <xs:annotation>
+      <xs:documentation>Defines the settings for the Keysets
+      Associated to an SD</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="127" name="KeySetVersionInformation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KeySetVersionInformationValue" type="KeySetVersionInformation_Type"/>
+              <xs:element maxOccurs="128" name="KeyIdentifier">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="KeyIdentifierValue" type="KeyIdentifierValue_Type"/>
+                    <xs:element name="KeyType" type="KeyType_Type"/>
+                    <xs:element name="KeyLength" type="KeyLength_Type"/>
+                    <xs:sequence>
+                      <xs:annotation>
+                        <xs:documentation>Data Generation
+                        Type</xs:documentation>
+                      </xs:annotation>
+                      <xs:element name="DataGenerationType" type="DataGenerationKind_Type"/>
+                      <xs:element minOccurs="0" name="Data">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:hexBinary">
+                            <xs:maxLength value="256"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="CounterValueGeneration">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:annotation>
+                      <xs:documentation>Counter Value Generation
+                      Type</xs:documentation>
+                    </xs:annotation>
+                    <xs:element name="CounterValueGenerationType" type="DataGenerationKind_Type"/>
+                    <xs:element minOccurs="0" name="Data">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:hexBinary">
+                          <xs:length value="5"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element minOccurs="0" name="CounterGAP">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:hexBinary">
+                          <xs:length value="5"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element minOccurs="0" name="CryptographicChecksumAcceptedLength" type="Byte_Type"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Applets">
+    <xs:annotation>
+      <xs:documentation>Defines the applets /
+      packages</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="256" ref="Package"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CardProfile">
+    <xs:annotation>
+      <xs:documentation>Defines the card profile</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Header"/>
+        <xs:element ref="CardBody"/>
+        <xs:element ref="CardManagement"/>
+        <xs:element ref="OTA"/>
+        <xs:element ref="KeySetSettings"/>
+        <xs:element minOccurs="0" ref="Applets"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
